@@ -16,16 +16,12 @@ client: discord.Client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    print(f"We have logged in as {client.user}")
+    await set_role(client)
 
 
 @client.event
 async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith("$hello"):
-        await message.channel.send("Hello!")
+    pass
 
 
 async def set_role(client: discord.Client):
@@ -42,4 +38,3 @@ async def set_role(client: discord.Client):
 
 if __name__ == "__main__":
     client.run(settings.token)
-    set_role(client)
